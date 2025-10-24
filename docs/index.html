@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 YouTube Shorts Автопостер v4.7</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e1e1e 0%, #252526 100%);
+            color: #cccccc;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(197, 134, 192, 0.1);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(197, 134, 192, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #c586c0, #4fc3f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            color: #969696;
+            margin-bottom: 30px;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(197, 134, 192, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #c586c0;
+        }
+        
+        .feature-card p {
+            color: #969696;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(79, 195, 247, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #c586c0, #4fc3f7);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(197, 134, 192, 0.4);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4fc3f7;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #969696;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 60px;
+        }
+        
+        .footer p {
+            color: #6e6e6e;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-link {
+            color: #c586c0;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: #4fc3f7;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 YouTube Shorts Автопостер</h1>
+            <p>Автоматический постер коротких видео на YouTube с современным GUI</p>
+            
+            <div class="badges">
+                <div class="badge">Python 3.11+</div>
+                <div class="badge">Selenium 4.15</div>
+                <div class="badge">OCR Detection</div>
+                <div class="badge">GitHub Integration</div>
+                <div class="badge">Multi-Account</div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Захват канала</h3>
+                <p>Копирование контента с определенного YouTube канала с автоматической обработкой и публикацией</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📥</div>
+                <h3>Скачивание по URL</h3>
+                <p>Загрузка конкретного видео по ссылке с полным циклом обработки и публикации</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📂</div>
+                <h3>Массовая загрузка</h3>
+                <p>Загрузка множества видео из папки с автоматическими паузами между публикациями</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>OCR обнаружение</h3>
+                <p>Компьютерное зрение для обнаружения блокировок YouTube и автоматического исключения аккаунтов</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>GitHub интеграция</h3>
+                <p>Автоматические отчеты, резервное копирование настроек и мониторинг через GitHub</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Мульти-аккаунт</h3>
+                <p>Управление множественными YouTube аккаунтами с индивидуальными настройками для каждого</p>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">4.7</div>
+                <div class="stat-label">Версия</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Автоматизация</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3x</div>
+                <div class="stat-label">Повторные попытки</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30s</div>
+                <div class="stat-label">Обновление статистики</div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 style="margin-bottom: 30px; color: #4fc3f7;">🚀 Готовы начать?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">Клонируйте репозиторий и начните автоматизировать свои YouTube каналы уже сегодня!</p>
+            
+            <a href="https://github.com/vangog12rus/youtube-bot-logs" class="cta-button">
+                📁 Открыть на GitHub
+            </a>
+            <a href="https://github.com/vangog12rus/youtube-bot-logs/issues" class="cta-button">
+                🐛 Сообщить об ошибке
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 YouTube Shorts Автопостер. Все права защищены.</p>
+            <p>Распространяется под лицензией MIT</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/vangog12rus/youtube-bot-logs" class="social-link">⭐</a>
+                <a href="https://github.com/vangog12rus/youtube-bot-logs/issues" class="social-link">🐛</a>
+                <a href="https://github.com/vangog12rus/youtube-bot-logs/wiki" class="social-link">📖</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Простая анимация для статистики
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(number => {
+                const target = parseInt(number.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        number.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        number.textContent = Math.floor(current);
+                    }
+                }, 30);
+            });
+        }
+        
+        // Запуск анимации при загрузке страницы
+        window.addEventListener('load', animateNumbers);
+        
+        // Добавляем интерактивность для карточек
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.borderColor = 'rgba(197, 134, 192, 0.5)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            });
+        });
+    </script>
+</body>
+</html>
